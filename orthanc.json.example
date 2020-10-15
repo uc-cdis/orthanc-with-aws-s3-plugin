@@ -1,0 +1,25 @@
+{
+  "StorageDirectory": "/var/lib/orthanc/db",
+  "RemoteAccessAllowed": true,
+  "AuthenticationEnabled": true,
+  "HttpsCACertificates": "/etc/ssl/certs/ca-certificates.crt",
+  "Plugins": [
+    "/usr/share/orthanc/plugins/"
+  ],
+  "StoreDicom": "false",
+  "PostgreSQL": {
+    "EnableIndex": true,
+    "EnableStorage": false,
+    "Host": "postgres",
+    "Port": 5432,
+    "Database": "orthanc",
+    "Username": "postgres",
+    "Password": "postgres"
+  },
+  "AwsS3Storage": {
+    "BucketName": "",
+    "Region": "us-east-1",
+    "AccessKey": "",
+    "SecretKey": ""
+  }
+}

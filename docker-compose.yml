@@ -1,0 +1,30 @@
+version: "3.6"
+services:
+  orthanc:
+    build: .
+    container_name: orthanc
+    depends_on:
+      - postgres
+    ports: [ "8042:8042" ]
+    environment:
+      VERBOSE_STARTUP: "true"
+      OSIMIS_WEB_VIEWER1_PLUGIN_ENABLED: "true"
+
+    secrets:
+      - orthanc.json
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=orthanc
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - PGDATA=/var/lib/postgresql/data/pgdata
+
+secrets:
+  orthanc.json:
+    file: orthanc.json
